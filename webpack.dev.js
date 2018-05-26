@@ -5,6 +5,10 @@ const webpack = require('webpack');
 module.exports = {
 	mode        : 'development',
 	resolve     : {
+
+		// File extensions used in imports
+		// Then importing files, the extension is always hidden
+		// You must specify which type of extension the resolver could find to avoid error
 		extensions: [
 			'.js',
 			'.ts'
