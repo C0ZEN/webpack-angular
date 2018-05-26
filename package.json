@@ -5,5 +5,9 @@
 	"repository": "https://github.com/C0ZEN/webpack-angular.git",
 	"author": "Geoffrey TESTELIN <geoffrey.testelin@gmail.com>",
 	"license": "MIT",
-	"private": false
+	"private": false,
+	"devDependencies": {
+		"webpack": "^4.9.1",
+		"webpack-cli": "^2.1.4"
+	}
 }
