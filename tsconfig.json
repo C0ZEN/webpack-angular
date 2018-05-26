@@ -1,16 +1,33 @@
 {
 	"compilerOptions": {
-		"target": "es5",
+		"declaration": false,
 		"module": "commonjs",
+		"noEmitOnError": true,
+		"noImplicitAny": true,
+		"target": "es5",
 		"moduleResolution": "node",
 		"sourceMap": true,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"lib": [
-			"es2015",
+			"es5",
+			"es6",
+			"es7",
 			"dom"
 		],
-		"noImplicitAny": true,
-		"suppressImplicitAnyIndexErrors": true
-	}
+		"suppressImplicitAnyIndexErrors": false,
+		"typeRoots": [
+			"./node_modules/@types"
+		],
+		"types": [
+			"core-js",
+			"node"
+		],
+		"include": [
+			"src/**/*"
+		]
+	},
+	"exclude": [
+		"./node_modules"
+	]
 }

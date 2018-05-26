@@ -1,6 +1,7 @@
 const path = require('path');
 const helpers = require('./helpers');
 const webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	mode        : 'development',
@@ -26,11 +27,28 @@ module.exports = {
 	},
 	module      : {
 		rules: [
-
-			// Parse TypeScript to JavaScript
 			{
-				test  : /\.ts$/,
-				loader: 'awesome-typescript-loader'
+				test   : /\.ts$/,
+				loaders: [
+
+					// Parse TypeScript to JavaScript
+					{
+						loader : 'awesome-typescript-loader',
+						options: {
+							configFileName: helpers.root('src', 'tsconfig.json')
+						}
+					},
+
+					// Add require(...) as prefix for templateUrl and styleUrls in Angular components
+					// This way allow the loader to inject external files as inline data
+					'angular2-template-loader'
+				]
+			},
+
+			// Extract html files
+			{
+				test  : /\.html$/,
+				loader: 'html-loader'
 			}
 		]
 	},
@@ -62,7 +80,12 @@ module.exports = {
 		),
 
 		// Workaround for https://github.com/stefanpenner/es6-promise/issues/100
-		new webpack.IgnorePlugin(/^vertx$/)
+		new webpack.IgnorePlugin(/^vertx$/),
+
+		// Generate the index.html file
+		new htmlWebpackPlugin({
+			title: 'Angular Webpack demo'
+		})
 	],
 	optimization: {
 
