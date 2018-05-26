@@ -1,0 +1,9 @@
+{
+	"name": "webpack-angular",
+	"version": "0.0.0",
+	"main": "index.js",
+	"repository": "https://github.com/C0ZEN/webpack-angular.git",
+	"author": "Geoffrey TESTELIN <geoffrey.testelin@gmail.com>",
+	"license": "MIT",
+	"private": false
+}
