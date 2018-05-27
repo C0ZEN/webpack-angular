@@ -21,7 +21,7 @@ module.exports = {
 		app      : './src/main.ts'
 	},
 	output      : {
-		path         : path.resolve(__dirname, 'dist'),
+		path         : helpers.root('dist'),
 		filename     : '[name].js',
 		chunkFilename: '[name].[id].js'
 	},
@@ -35,7 +35,7 @@ module.exports = {
 					{
 						loader : 'awesome-typescript-loader',
 						options: {
-							configFileName: helpers.root('src', 'tsconfig.json')
+							configFileName: helpers.root('tsconfig.json')
 						}
 					},
 
@@ -58,25 +58,25 @@ module.exports = {
 		// The request of a dependency is an expression in ./node_modules/@angular/core/fesm5/core.js
 		new webpack.ContextReplacementPlugin(
 			/\@angular(\\|\/)core(\\|\/)fesm5/,
-			helpers.root('./src')
+			helpers.root('src')
 		),
 
 		// Workaround for https://github.com/angular/angular/issues/11580
 		new webpack.ContextReplacementPlugin(
 			/\@angular\b.*\b(bundles|linker)/,
-			helpers.root('./src')
+			helpers.root('src')
 		),
 
 		// Workaround for https://github.com/angular/angular/issues/14898
 		new webpack.ContextReplacementPlugin(
 			/angular(\\|\/)core(\\|\/)@angular/,
-			helpers.root('./src')
+			helpers.root('src')
 		),
 
 		// Workaround for https://github.com/angular/angular/issues/20357
 		new webpack.ContextReplacementPlugin(
 			/\@angular(\\|\/)core(\\|\/)esm5/,
-			helpers.root('./src')
+			helpers.root('src')
 		),
 
 		// Workaround for https://github.com/stefanpenner/es6-promise/issues/100
