@@ -1,12 +1,15 @@
 const helpers = require('../helpers');
 
 module.exports = {
+	profile  : true,
+	parallelism: 1,
 	devServer: {
-		host   : 'localhost',
-		port   : '8001',
-		open   : true,
-		overlay: true,
-		hot    : true
+		host    : 'localhost',
+		port    : '8001',
+		open    : true,
+		overlay : true,
+		hot     : true,
+		progress: true
 	},
 	module   : {
 		rules: [
@@ -53,5 +56,8 @@ module.exports = {
 				loader: 'html-loader'
 			}
 		]
+	},
+	optimization: {
+		minimize: false
 	}
 };

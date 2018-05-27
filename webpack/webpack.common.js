@@ -123,5 +123,8 @@ module.exports = {
 		colors      : true,
 		errors      : true,
 		errorDetails: true
+	},
+	performance : {
+		hints: 'error'
 	}
 };

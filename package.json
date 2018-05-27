@@ -51,7 +51,7 @@
 		"zone.js": "^0.8.26"
 	},
 	"scripts": {
-		"build": "npm run remove-dist && npx webpack --progress --profile --env development",
+		"build": "npm run remove-dist && npx webpack --env development",
 		"remove-dist": "rimraf dist",
 		"serve": "nodemon --watch webpack.config.js --watch webpack --exec \"npm run remove-dist && npx webpack-dev-server --env development\""
 	}
