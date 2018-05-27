@@ -21,6 +21,7 @@ It should be more verbose to avoid painful experiences and listed in top.
 - Added Hot Module Replacement
 - Added TSLint
 - SCSS handle by webpack
+- Bootstrap styles and scss global styles into assets folder
 
 ### Changed
 - Multiple configuration files for webpack
