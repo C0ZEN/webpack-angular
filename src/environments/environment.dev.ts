@@ -1,3 +1,4 @@
 export const environment: any = {
-	production: false
+	production: false,
+	hmr       : true
 };

@@ -3,7 +3,7 @@ const Webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 module.exports = {
 	mode        : 'development',
@@ -31,7 +31,8 @@ module.exports = {
 		host   : 'localhost',
 		port   : '8001',
 		open   : true,
-		overlay: true
+		overlay: true,
+		hot    : true
 	},
 	module      : {
 		rules: [
@@ -135,7 +136,10 @@ module.exports = {
 		}),
 
 		// Display better error when using dev-server
-		new ErrorOverlayPlugin()
+		new ErrorOverlayPlugin(),
+
+		// Enable the Hot Module Replacement
+		new Webpack.HotModuleReplacementPlugin()
 	],
 	optimization: {
 
@@ -143,5 +147,10 @@ module.exports = {
 		splitChunks: {
 			chunks: 'all'
 		}
+	},
+	stats       : {
+		colors      : true,
+		errors      : true,
+		errorDetails: true
 	}
 };

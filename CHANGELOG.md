@@ -18,6 +18,7 @@ It should be more verbose to avoid painful experiences and listed in top.
 - Favicons
 - Enhanced script attributes
 - Npm serve script to use dev-server
+- Added Hot Module Replacement
 
 ## [0.1.1]
 ### Changed
