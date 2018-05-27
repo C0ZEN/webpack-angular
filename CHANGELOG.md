@@ -13,8 +13,14 @@ On top of [Keep a Changelog](http://keepachangelog.com/), you can use the type `
 It should be more verbose to avoid painful experiences and listed in top.
 
 ## [Unreleased]
+## [0.1.1]
+### Changed
+- All absolute path refactored to use the helpers properly
 
-### [0.1.0]
+### Fixed
+- TypeScript configuration errors
+
+## [0.1.0]
 ### Added
 - Simple Angular project
 - Webpack minimalist config
