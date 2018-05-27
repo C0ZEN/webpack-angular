@@ -19,6 +19,7 @@ It should be more verbose to avoid painful experiences and listed in top.
 - Enhanced script attributes
 - Npm serve script to use dev-server
 - Added Hot Module Replacement
+- Added TSLint
 
 ## [0.1.1]
 ### Changed

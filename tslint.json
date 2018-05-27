@@ -53,9 +53,6 @@
 		"no-console": [
 			true,
 			"debug",
-			"info",
-			"time",
-			"timeEnd",
 			"trace"
 		],
 		"no-construct": true,
@@ -127,13 +124,13 @@
 		"directive-selector": [
 			true,
 			"attribute",
-			"ap",
+			"app",
 			"camelCase"
 		],
 		"component-selector": [
 			true,
 			"element",
-			"ap",
+			"app",
 			"kebab-case"
 		],
 		"no-output-on-prefix": true,

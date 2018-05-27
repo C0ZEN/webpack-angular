@@ -39,6 +39,25 @@ module.exports = {
 		rules: [
 			{
 				test   : /\.ts$/,
+				enforce: 'pre',
+				use    : [
+
+					// TSLint analysis
+					{
+						loader : 'tslint-loader',
+						options: {
+							configFile: 'tslint.json',
+							emitErrors: true,
+							failOnHint: false,
+							typeCheck: false,
+							fix: true,
+							tsConfigFile: 'tsconfig.json'
+						}
+					}
+				]
+			},
+			{
+				test   : /\.ts$/,
 				loaders: [
 
 					// Parse TypeScript to JavaScript
