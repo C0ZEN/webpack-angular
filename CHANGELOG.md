@@ -20,6 +20,7 @@ It should be more verbose to avoid painful experiences and listed in top.
 - Npm serve script to use dev-server
 - Added Hot Module Replacement
 - Added TSLint
+- SCSS handle by webpack
 
 ### Changed
 - Multiple configuration files for webpack

@@ -55,6 +55,35 @@ module.exports = {
 			{
 				test  : /\.html$/,
 				loader: 'html-loader'
+			},
+
+			// Process SCSS files to CSS files
+			{
+				test: /\.scss$/,
+				use : [
+					'css-to-string-loader',
+					'style-loader',
+					{
+						loader : 'css-loader',
+						options: {
+							sourceMap    : true,
+							minimize     : false,
+							importLoaders: 1
+						}
+					},
+					{
+						loader : 'fast-sass-loader',
+						options: {
+							includePaths: []
+						}
+					}
+				]
+			},
+
+			// Embed images and fonts
+			{
+				test  : /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+				loader: 'url-loader'
 			}
 		]
 	},
