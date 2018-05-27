@@ -1,7 +1,8 @@
-const path = require('path');
 const helpers = require('./helpers');
-const webpack = require('webpack');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const Webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const package = require('./package');
 
 module.exports = {
 	mode        : 'development',
@@ -56,34 +57,34 @@ module.exports = {
 
 		// Workaround for Critical dependency
 		// The request of a dependency is an expression in ./node_modules/@angular/core/fesm5/core.js
-		new webpack.ContextReplacementPlugin(
+		new Webpack.ContextReplacementPlugin(
 			/\@angular(\\|\/)core(\\|\/)fesm5/,
 			helpers.root('src')
 		),
 
 		// Workaround for https://github.com/angular/angular/issues/11580
-		new webpack.ContextReplacementPlugin(
+		new Webpack.ContextReplacementPlugin(
 			/\@angular\b.*\b(bundles|linker)/,
 			helpers.root('src')
 		),
 
 		// Workaround for https://github.com/angular/angular/issues/14898
-		new webpack.ContextReplacementPlugin(
+		new Webpack.ContextReplacementPlugin(
 			/angular(\\|\/)core(\\|\/)@angular/,
 			helpers.root('src')
 		),
 
 		// Workaround for https://github.com/angular/angular/issues/20357
-		new webpack.ContextReplacementPlugin(
+		new Webpack.ContextReplacementPlugin(
 			/\@angular(\\|\/)core(\\|\/)esm5/,
 			helpers.root('src')
 		),
 
 		// Workaround for https://github.com/stefanpenner/es6-promise/issues/100
-		new webpack.IgnorePlugin(/^vertx$/),
+		new Webpack.IgnorePlugin(/^vertx$/),
 
 		// Generate the index.html file
-		new htmlWebpackPlugin({
+		new HtmlWebpackPlugin({
 			inject         : false,
 			template       : require('html-webpack-template'),
 			title          : 'Angular Webpack demo',
@@ -96,6 +97,28 @@ module.exports = {
 			mobile         : true,
 			lang           : 'en-US',
 			bodyHtmlSnippet: '<app-root></app-root>'
+		}),
+
+		// Generate the favicon into the index.html file
+		new FaviconsWebpackPlugin({
+			logo           : helpers.root('src/assets/icons/512/icons8-rocket-512.png'),
+			prefix         : 'icons-[hash]/',
+			emitStats      : false,
+			persistentCache: true,
+			inject         : true,
+			background     : 'transparent',
+			icons          : {
+				android     : true,
+				appleIcon   : true,
+				appleStartup: true,
+				coast       : true,
+				favicons    : true,
+				firefox     : true,
+				opengraph   : true,
+				twitter     : true,
+				yandex      : true,
+				windows     : true
+			}
 		})
 	],
 	optimization: {

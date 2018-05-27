@@ -13,6 +13,10 @@ On top of [Keep a Changelog](http://keepachangelog.com/), you can use the type `
 It should be more verbose to avoid painful experiences and listed in top.
 
 ## [Unreleased]
+### Added
+- Enhanced configuration for the index.html file
+- Favicons
+
 ## [0.1.1]
 ### Changed
 - All absolute path refactored to use the helpers properly
