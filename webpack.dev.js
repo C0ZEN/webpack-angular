@@ -2,7 +2,7 @@ const helpers = require('./helpers');
 const Webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const package = require('./package');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 module.exports = {
 	mode        : 'development',
@@ -96,7 +96,8 @@ module.exports = {
 			],
 			mobile         : true,
 			lang           : 'en-US',
-			bodyHtmlSnippet: '<app-root></app-root>'
+			bodyHtmlSnippet: '<app-root></app-root>',
+			cache          : false
 		}),
 
 		// Generate the favicon into the index.html file
@@ -119,6 +120,11 @@ module.exports = {
 				yandex      : true,
 				windows     : true
 			}
+		}),
+
+		// Add more options over the scripts attributes
+		new ScriptExtHtmlWebpackPlugin({
+			defaultAttribute: 'defer'
 		})
 	],
 	optimization: {

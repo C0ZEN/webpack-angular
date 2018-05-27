@@ -16,6 +16,7 @@ It should be more verbose to avoid painful experiences and listed in top.
 ### Added
 - Enhanced configuration for the index.html file
 - Favicons
+- Enhanced script attributes
 
 ## [0.1.1]
 ### Changed
