@@ -1,9 +1,10 @@
 const helpers = require('../helpers');
+const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
 
 module.exports = {
-	profile  : true,
-	parallelism: 1,
-	devServer: {
+	profile     : true,
+	parallelism : 1,
+	devServer   : {
 		host    : 'localhost',
 		port    : '8001',
 		open    : true,
@@ -11,7 +12,7 @@ module.exports = {
 		hot     : true,
 		progress: true
 	},
-	module   : {
+	module      : {
 		rules: [
 			{
 				test   : /\.ts$/,
@@ -57,6 +58,11 @@ module.exports = {
 			}
 		]
 	},
+	plugins     : [
+		new SimpleProgressWebpackPlugin({
+			format: 'compact'
+		})
+	],
 	optimization: {
 		minimize: false
 	}

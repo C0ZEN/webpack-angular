@@ -7,6 +7,8 @@ const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
+	profile  : false,
+	parallelism: 4,
 	resolve     : {
 
 		// File extensions used in imports
@@ -117,7 +119,8 @@ module.exports = {
 		// Extract common dependencies (the one that are both included in vendors and scripts)
 		splitChunks: {
 			chunks: 'all'
-		}
+		},
+		minimize: true
 	},
 	stats       : {
 		colors      : true,
