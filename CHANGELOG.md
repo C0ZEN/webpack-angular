@@ -21,6 +21,9 @@ It should be more verbose to avoid painful experiences and listed in top.
 - Added Hot Module Replacement
 - Added TSLint
 
+### Changed
+- Multiple configuration files for webpack
+
 ## [0.1.1]
 ### Changed
 - All absolute path refactored to use the helpers properly

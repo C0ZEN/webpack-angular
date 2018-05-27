@@ -30,7 +30,8 @@
 		"typescript": "^2.8.3",
 		"webpack": "^4.9.1",
 		"webpack-cli": "^2.1.4",
-		"webpack-dev-server": "^3.1.4"
+		"webpack-dev-server": "^3.1.4",
+		"webpack-merge": "^4.1.2"
 	},
 	"dependencies": {
 		"@angular/animations": "^6.0.3",
@@ -50,8 +51,8 @@
 		"zone.js": "^0.8.26"
 	},
 	"scripts": {
-		"build": "npm run remove-dist && npx webpack --config ./webpack.dev.js --progress --profile",
+		"build": "npm run remove-dist && npx webpack --progress --profile --env development",
 		"remove-dist": "rimraf dist",
-		"serve": "nodemon --watch webpack.dev.js --exec \"npm run remove-dist && npx webpack-dev-server --config ./webpack.dev.js\""
+		"serve": "nodemon --watch webpack.config.js --watch webpack --exec \"npm run remove-dist && npx webpack-dev-server --env development\""
 	}
 }

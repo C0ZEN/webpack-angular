@@ -1,4 +1,4 @@
-const helpers = require('./helpers');
+const helpers = require('../helpers');
 const Webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
@@ -7,7 +7,6 @@ const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
-	mode        : 'development',
 	resolve     : {
 
 		// File extensions used in imports
@@ -27,59 +26,6 @@ module.exports = {
 		path         : helpers.root('dist'),
 		filename     : '[name].js',
 		chunkFilename: '[name].[id].js'
-	},
-	devServer   : {
-		host   : 'localhost',
-		port   : '8001',
-		open   : true,
-		overlay: true,
-		hot    : true
-	},
-	module      : {
-		rules: [
-			{
-				test   : /\.ts$/,
-				enforce: 'pre',
-				use    : [
-
-					// TSLint analysis
-					{
-						loader : 'tslint-loader',
-						options: {
-							configFile: 'tslint.json',
-							emitErrors: true,
-							failOnHint: false,
-							typeCheck: false,
-							fix: true,
-							tsConfigFile: 'tsconfig.json'
-						}
-					}
-				]
-			},
-			{
-				test   : /\.ts$/,
-				loaders: [
-
-					// Parse TypeScript to JavaScript
-					{
-						loader : 'awesome-typescript-loader',
-						options: {
-							configFileName: helpers.root('tsconfig.json')
-						}
-					},
-
-					// Add require(...) as prefix for templateUrl and styleUrls in Angular components
-					// This way allow the loader to inject external files as inline data
-					'angular2-template-loader'
-				]
-			},
-
-			// Extract html files
-			{
-				test  : /\.html$/,
-				loader: 'html-loader'
-			}
-		]
 	},
 	plugins     : [
 
