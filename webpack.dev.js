@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
 	mode        : 'development',
@@ -135,11 +136,16 @@ module.exports = {
 			defaultAttribute: 'defer'
 		}),
 
-		// Display better error when using dev-server
+		// Display an overlay with the error when running the webpack dev-server
 		new ErrorOverlayPlugin(),
 
 		// Enable the Hot Module Replacement
-		new Webpack.HotModuleReplacementPlugin()
+		new Webpack.HotModuleReplacementPlugin(),
+
+		// Output better errors and warnings
+		new FriendlyErrorsWebpackPlugin({
+			clearConsole: true
+		})
 	],
 	optimization: {
 
