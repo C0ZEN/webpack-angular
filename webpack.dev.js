@@ -84,7 +84,18 @@ module.exports = {
 
 		// Generate the index.html file
 		new htmlWebpackPlugin({
-			title: 'Angular Webpack demo'
+			inject         : false,
+			template       : require('html-webpack-template'),
+			title          : 'Angular Webpack demo',
+			meta           : [
+				{
+					name   : 'description',
+					content: 'An Angular 6 project with a complete custom webpack configuration'
+				}
+			],
+			mobile         : true,
+			lang           : 'en-US',
+			bodyHtmlSnippet: '<app-root></app-root>'
 		})
 	],
 	optimization: {
