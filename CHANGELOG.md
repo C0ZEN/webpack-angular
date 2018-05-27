@@ -17,6 +17,7 @@ It should be more verbose to avoid painful experiences and listed in top.
 - Enhanced configuration for the index.html file
 - Favicons
 - Enhanced script attributes
+- Npm serve script to use dev-server
 
 ## [0.1.1]
 ### Changed

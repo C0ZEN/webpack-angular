@@ -3,6 +3,7 @@ const Webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
 
 module.exports = {
 	mode        : 'development',
@@ -25,6 +26,12 @@ module.exports = {
 		path         : helpers.root('dist'),
 		filename     : '[name].js',
 		chunkFilename: '[name].[id].js'
+	},
+	devServer   : {
+		host   : 'localhost',
+		port   : '8001',
+		open   : true,
+		overlay: true
 	},
 	module      : {
 		rules: [
@@ -125,7 +132,10 @@ module.exports = {
 		// Add more options over the scripts attributes
 		new ScriptExtHtmlWebpackPlugin({
 			defaultAttribute: 'defer'
-		})
+		}),
+
+		// Display better error when using dev-server
+		new ErrorOverlayPlugin()
 	],
 	optimization: {
 
