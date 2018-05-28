@@ -87,7 +87,7 @@ module.exports = {
 				test: /\.scss$/,
 				include: /assets/,
 				use: [
-					'style-loader',
+					MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: {
@@ -105,10 +105,14 @@ module.exports = {
 				]
 			},
 
-			// Embed images and fonts
+			// Embed all fonts
 			{
-				test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-				loader: 'url-loader'
+				test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+				loader: 'file-loader',
+				options: {
+					name: '[name].[ext]',
+					outputPath: 'fonts/'
+				}
 			}
 		]
 	},
