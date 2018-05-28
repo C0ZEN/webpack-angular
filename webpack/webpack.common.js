@@ -5,31 +5,34 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-	profile     : false,
-	parallelism : 4,
-	resolve     : {
+	profile: false,
+	parallelism: 4,
+	resolve: {
 
 		// File extensions used in imports
 		// Then importing files, the extension is always hidden
 		// You must specify which type of extension the resolver could find to avoid error
 		extensions: [
 			'.js',
-			'.ts'
+			'.ts',
+			'.scss'
 		]
 	},
-	entry       : {
+	entry: {
 		polyfills: './src/polyfills.ts',
-		vendors  : './src/vendors.ts',
-		app      : './src/main.ts'
+		vendors: './src/vendors.ts',
+		app: './src/main.ts',
+		style: './src/assets/scss/styles.scss'
 	},
-	output      : {
-		path         : helpers.root('dist'),
-		filename     : '[name].js',
+	output: {
+		path: helpers.root('dist'),
+		filename: '[name].js',
 		chunkFilename: '[name].[id].js'
 	},
-	plugins     : [
+	plugins: [
 
 		// Workaround for Critical dependency
 		// The request of a dependency is an expression in ./node_modules/@angular/core/fesm5/core.js
@@ -61,40 +64,40 @@ module.exports = {
 
 		// Generate the index.html file
 		new HtmlWebpackPlugin({
-			inject         : false,
-			template       : require('html-webpack-template'),
-			title          : 'Angular Webpack demo',
-			meta           : [
+			inject: false,
+			template: require('html-webpack-template'),
+			title: 'Angular Webpack demo',
+			meta: [
 				{
-					name   : 'description',
+					name: 'description',
 					content: 'An Angular 6 project with a complete custom webpack configuration'
 				}
 			],
-			mobile         : true,
-			lang           : 'en-US',
+			mobile: true,
+			lang: 'en-US',
 			bodyHtmlSnippet: '<app-root></app-root>',
-			cache          : false
+			cache: false
 		}),
 
 		// Generate the favicon into the index.html file
 		new FaviconsWebpackPlugin({
-			logo           : helpers.root('src/assets/icons/512/icons8-rocket-512.png'),
-			prefix         : 'icons-[hash]/',
-			emitStats      : false,
+			logo: helpers.root('src/assets/icons/512/icons8-rocket-512.png'),
+			prefix: 'icons-[hash]/',
+			emitStats: false,
 			persistentCache: true,
-			inject         : true,
-			background     : 'transparent',
-			icons          : {
-				android     : true,
-				appleIcon   : true,
+			inject: true,
+			background: 'transparent',
+			icons: {
+				android: true,
+				appleIcon: true,
 				appleStartup: true,
-				coast       : true,
-				favicons    : true,
-				firefox     : true,
-				opengraph   : true,
-				twitter     : true,
-				yandex      : true,
-				windows     : true
+				coast: true,
+				favicons: true,
+				firefox: true,
+				opengraph: true,
+				twitter: true,
+				yandex: true,
+				windows: true
 			}
 		}),
 
@@ -112,6 +115,12 @@ module.exports = {
 		// Output better errors and warnings
 		new FriendlyErrorsWebpackPlugin({
 			clearConsole: true
+		}),
+
+		// Output the global styles from assets
+		new MiniCssExtractPlugin({
+			filename: '[name].css',
+			chunkFilename: '[id].css'
 		})
 	],
 	optimization: {
@@ -120,14 +129,14 @@ module.exports = {
 		splitChunks: {
 			chunks: 'all'
 		},
-		minimize   : true
+		minimize: true
 	},
-	stats       : {
-		colors      : true,
-		errors      : true,
+	stats: {
+		colors: true,
+		errors: true,
 		errorDetails: true
 	},
-	performance : {
+	performance: {
 		// hints: 'error'
 	}
 };

@@ -1,45 +1,46 @@
 const helpers = require('../helpers');
 const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-	profile     : true,
-	parallelism : 1,
-	devServer   : {
-		host    : 'localhost',
-		port    : '8001',
-		open    : true,
-		overlay : true,
-		hot     : true,
+	profile: true,
+	parallelism: 1,
+	devServer: {
+		host: 'localhost',
+		port: '8001',
+		open: true,
+		overlay: true,
+		hot: true,
 		progress: true
 	},
-	module      : {
+	module: {
 		rules: [
 			{
-				test   : /\.ts$/,
+				test: /\.ts$/,
 				enforce: 'pre',
-				use    : [
+				use: [
 
 					// TSLint analysis
 					{
-						loader : 'tslint-loader',
+						loader: 'tslint-loader',
 						options: {
-							configFile  : 'tslint.json',
-							emitErrors  : true,
-							failOnHint  : false,
-							typeCheck   : false,
-							fix         : true,
+							configFile: 'tslint.json',
+							emitErrors: true,
+							failOnHint: false,
+							typeCheck: false,
+							fix: true,
 							tsConfigFile: 'tsconfig.json'
 						}
 					}
 				]
 			},
 			{
-				test   : /\.ts$/,
+				test: /\.ts$/,
 				loaders: [
 
 					// Parse TypeScript to JavaScript
 					{
-						loader : 'awesome-typescript-loader',
+						loader: 'awesome-typescript-loader',
 						options: {
 							configFileName: helpers.root('tsconfig.json')
 						}
@@ -53,26 +54,50 @@ module.exports = {
 
 			// Extract html files
 			{
-				test  : /\.html$/,
+				test: /\.html$/,
 				loader: 'html-loader'
 			},
 
 			// Process SCSS files to CSS files
 			{
 				test: /\.scss$/,
-				use : [
+				exclude: /assets/,
+				use: [
 					'css-to-string-loader',
 					'style-loader',
 					{
-						loader : 'css-loader',
+						loader: 'css-loader',
 						options: {
-							sourceMap    : true,
-							minimize     : false,
+							sourceMap: true,
+							minimize: false,
 							importLoaders: 1
 						}
 					},
 					{
-						loader : 'fast-sass-loader',
+						loader: 'fast-sass-loader',
+						options: {
+							includePaths: []
+						}
+					}
+				]
+			},
+
+			// Process SCSS from assets
+			{
+				test: /\.scss$/,
+				include: /assets/,
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: true,
+							minimize: false,
+							importLoaders: 1
+						}
+					},
+					{
+						loader: 'fast-sass-loader',
 						options: {
 							includePaths: []
 						}
@@ -82,12 +107,12 @@ module.exports = {
 
 			// Embed images and fonts
 			{
-				test  : /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+				test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
 				loader: 'url-loader'
 			}
 		]
 	},
-	plugins     : [
+	plugins: [
 		new SimpleProgressWebpackPlugin({
 			format: 'compact'
 		})
