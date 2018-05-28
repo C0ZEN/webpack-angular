@@ -114,7 +114,7 @@ module.exports = {
 	},
 	plugins: [
 		new SimpleProgressWebpackPlugin({
-			format: 'compact'
+			format: 'minimal'
 		})
 	],
 	optimization: {

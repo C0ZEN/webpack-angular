@@ -24,9 +24,11 @@ It should be more verbose to avoid painful experiences and listed in top.
 - Added TSLint
 - SCSS handle by webpack
 - Bootstrap styles and scss global styles into assets folder
+- Added Font Awesome
 
 ### Changed
 - Multiple configuration files for webpack
+- Split assets styles files 
 
 ## [0.1.1]
 ### Changed

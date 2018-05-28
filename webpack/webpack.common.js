@@ -25,6 +25,8 @@ module.exports = {
 		polyfills: './src/polyfills.ts',
 		vendors: './src/vendors.ts',
 		app: './src/main.ts',
+		bootstrap: './src/assets/scss/bootstrap.scss',
+		'font-awesome': './src/assets/scss/font-awesome.scss',
 		style: './src/assets/scss/styles.scss'
 	},
 	output: {

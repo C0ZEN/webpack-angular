@@ -1,8 +1,4 @@
 // Global stuff like variables and mixins
 @import 'imports';
-// Override bootstrap
-@import 'bootstrap/bootstrap';
-// Original bootstrap
-@import '~bootstrap/scss/bootstrap';
 // Other files
 @import 'utils';
