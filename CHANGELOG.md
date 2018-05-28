@@ -14,6 +14,15 @@ It should be more verbose to avoid painful experiences and listed in top.
 
 ## [Unreleased]
 
+## [0.3.0]
+### Added
+- Added Font Awesome
+- Added Fonts
+- Added images
+
+### Changed
+- Split assets styles files 
+
 ## [0.2.0]
 ### Added
 - Enhanced configuration for the index.html file
@@ -24,13 +33,9 @@ It should be more verbose to avoid painful experiences and listed in top.
 - Added TSLint
 - SCSS handle by webpack
 - Bootstrap styles and scss global styles into assets folder
-- Added Font Awesome
-- Added Fonts
-- Added images
 
 ### Changed
 - Multiple configuration files for webpack
-- Split assets styles files 
 
 ## [0.1.1]
 ### Changed
