@@ -6,8 +6,10 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+	context: helpers.root(),
 	profile: false,
 	parallelism: 4,
 	resolve: {
@@ -83,7 +85,7 @@ module.exports = {
 
 		// Generate the favicon into the index.html file
 		new FaviconsWebpackPlugin({
-			logo: helpers.root('src/assets/icons/512/icons8-rocket-512.png'),
+			logo: helpers.root('src/assets/icons/png/512/icons8-rocket-512.png'),
 			prefix: 'icons-[hash]/',
 			emitStats: false,
 			persistentCache: true,
@@ -123,7 +125,14 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[id].css'
-		})
+		}),
+
+		// Copy stuff to dist
+		new CopyWebpackPlugin([
+			{
+				from: 'src/assets/icons/**/*'
+			}
+		])
 	],
 	optimization: {
 
