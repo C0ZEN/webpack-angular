@@ -7,11 +7,11 @@ import {NgModule} from '@angular/core';
 	declarations: [
 		AppComponent
 	],
-	imports     : [
+	imports:      [
 		CommonModule,
 		BrowserModule
 	],
-	bootstrap   : [AppComponent]
+	bootstrap:    [AppComponent]
 })
 
 export class AppModule {

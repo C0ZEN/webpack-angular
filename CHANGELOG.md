@@ -25,7 +25,8 @@ It should be more verbose to avoid painful experiences and listed in top.
 - SCSS handle by webpack
 - Bootstrap styles and scss global styles into assets folder
 - Added Font Awesome
-- Fonts
+- Added Fonts
+- Added images
 
 ### Changed
 - Multiple configuration files for webpack
